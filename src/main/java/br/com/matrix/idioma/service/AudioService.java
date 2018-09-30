@@ -24,13 +24,13 @@ public class AudioService {
 	}
 
 	
-	public List<Audio> readerAll(){
+	public List<Audio> findAll(){
 		
 		return audioRepository.findAll();
 		
 	}
 	
-	public Optional<Audio> readerOne(Long id) {
+	public Optional<Audio> findOne(long id) {
 		return audioRepository.findById(id);
 		
 	}
