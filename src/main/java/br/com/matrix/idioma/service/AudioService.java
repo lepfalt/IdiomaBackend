@@ -1,5 +1,8 @@
 package br.com.matrix.idioma.service;
 
+import java.util.List;
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.matrix.idioma.model.Audio;
@@ -20,4 +23,20 @@ public class AudioService {
 		return audioRepository.save(audio);
 	}
 
+	
+	public List<Audio> readerAll(){
+		
+		return audioRepository.findAll();
+		
+	}
+	
+	public Optional<Audio> readerOne(Long id) {
+		return audioRepository.findById(id);
+		
+	}
+	
+	public void delete(long id) {
+		 audioRepository.deleteById(id);
+		
+	}
 }
