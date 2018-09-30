@@ -30,12 +30,12 @@ public class AudioService {
 		
 	}
 	
-	public Optional<Audio> findOne(long id) {
+	public Optional<Audio> findOne(Long id) {
 		return audioRepository.findById(id);
 		
 	}
 	
-	public void delete(long id) {
+	public void delete(Long id) {
 		 audioRepository.deleteById(id);
 		
 	}
