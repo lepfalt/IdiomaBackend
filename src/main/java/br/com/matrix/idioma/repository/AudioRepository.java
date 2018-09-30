@@ -7,6 +7,5 @@ import br.com.matrix.idioma.model.Audio;
 @Repository
 public interface AudioRepository  extends JpaRepository<Audio, Long> {
 
-	Audio findyByAudio(long id);
 	
 }
