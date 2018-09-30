@@ -10,7 +10,7 @@ import lombok.Setter;
 @Entity
 public class User {
 	
-	private long id;
+	private Long id;
 	private String login;
 	private String password;
 	private String email;
