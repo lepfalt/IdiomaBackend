@@ -15,6 +15,9 @@ public class AudioService {
 		return audioRepository.save(audio);
 	}
 	
-	
+	public Audio update(Audio audio) {
+		
+		return audioRepository.save(audio);
+	}
 
 }
