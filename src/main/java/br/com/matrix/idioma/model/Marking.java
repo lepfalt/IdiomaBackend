@@ -1,36 +1,35 @@
 package br.com.matrix.idioma.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 import javax.validation.constraints.NotEmpty;
-
-import org.hibernate.validator.constraints.URL;
 
 import lombok.Getter;
 import lombok.Setter;
 
+@Entity
 @Getter
 @Setter
-@Entity
-public class Audio {
+
+public class Marking {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	@URL
-	private String link;
+	@OneToOne
 	@NotEmpty
-	private String description;
+	private Audio audio;
+	@OneToOne
 	@NotEmpty
-	private String title;
+	private User user;
 	@NotEmpty
-	private LocalDateTime duration;
+	private LocalTime begin;
 	@NotEmpty
-	private LocalDate creationDate;
-	
+	private LocalTime end;
+
 }
