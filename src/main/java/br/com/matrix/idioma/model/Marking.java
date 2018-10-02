@@ -12,10 +12,10 @@ import javax.validation.constraints.NotEmpty;
 import lombok.Getter;
 import lombok.Setter;
 
-@Entity
+
 @Getter
 @Setter
-
+@Entity
 public class Marking {
 
 	@Id
