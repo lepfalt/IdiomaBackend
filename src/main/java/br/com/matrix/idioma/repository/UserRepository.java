@@ -6,7 +6,6 @@ import org.springframework.stereotype.Repository;
 import br.com.matrix.idioma.model.User;
 
 @Repository
-public interface UserRepository  extends JpaRepository<User, Long> {
-	 	
+public interface UserRepository  extends JpaRepository<User, Long> { 	
 
 }
