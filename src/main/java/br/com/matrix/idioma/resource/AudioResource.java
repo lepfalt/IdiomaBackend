@@ -1,5 +1,7 @@
 package br.com.matrix.idioma.resource;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,7 +24,7 @@ public class AudioResource {
 	private AudioService audioService;
 
 	@PostMapping
-	public ResponseEntity<Audio> create(@RequestBody Audio audio) {
+	public ResponseEntity<Audio> create(@Valid @RequestBody Audio audio) {
 		return new ResponseEntity<>(audioService.create(audio), HttpStatus.CREATED);
 	}
 
