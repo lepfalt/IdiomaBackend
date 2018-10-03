@@ -23,8 +23,10 @@ public class UserResource {
 	@Autowired
 	private UserService userService;
 	
-	@GetMapping()
-	public ResponseEntity<?> findById(Long id) {
+
+	
+	@GetMapping(path = "/{id}")
+	public ResponseEntity<?> findById(@PathVariable("id") Long id) {
 		return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
 	}
 	

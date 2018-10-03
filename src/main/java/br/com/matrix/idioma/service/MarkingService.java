@@ -1,6 +1,5 @@
 package br.com.matrix.idioma.service;
 
-import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +24,8 @@ public class MarkingService {
 		return markingRepository.findById(id);
 	}
 	
-	public List<Marking> findByUserAndAudio(User user, Audio audio){
-		return markingRepository.findyByUserAndAudio(user, audio);
+	public Optional<Marking> findByUserAndAudio(User user, Audio audio){
+		return markingRepository.findByUserAndAudio(user, audio);
 	}
 	
 	public Marking update(Marking marking) {

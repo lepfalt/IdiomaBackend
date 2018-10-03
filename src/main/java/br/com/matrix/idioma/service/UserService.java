@@ -1,8 +1,6 @@
 package br.com.matrix.idioma.service;
 
 
-import java.util.Optional;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +16,8 @@ public class UserService {
 	public User create(User user) {
 		return userRepository.save(user);
 	}
-	public Optional<User> findById(Long id) {
-		return userRepository.findById(id);	
+	public User findById(Long id) {
+		return userRepository.findById(id).get();	
 	}
 	public User update(User user) {
 		return userRepository.save(user);
