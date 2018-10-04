@@ -18,29 +18,27 @@ import br.com.matrix.idioma.model.User;
 import br.com.matrix.idioma.service.UserService;
 
 @RestController
-@RequestMapping("users")
+@RequestMapping("/user")
 public class UserResource {
 	@Autowired
 	private UserService userService;
-	
 
-	
 	@GetMapping(path = "/{id}")
 	public ResponseEntity<?> findById(@PathVariable("id") Long id) {
 		return new ResponseEntity<>(userService.findById(id), HttpStatus.OK);
 	}
-	
+
 	@PostMapping
 	public ResponseEntity<?> create(@Valid @RequestBody User user) {
 		return new ResponseEntity<>(userService.create(user), HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
 		userService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<?> update(@Valid @RequestBody User user) {
 		userService.update(user);

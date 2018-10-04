@@ -1,22 +1,32 @@
 package br.com.matrix.idioma.service;
 
+import java.util.List;
 import java.util.Optional;
 
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.com.matrix.idioma.model.Audio;
 import br.com.matrix.idioma.model.Marking;
-import br.com.matrix.idioma.model.User;
+import br.com.matrix.idioma.model.MarkingDTO;
 import br.com.matrix.idioma.repository.MarkingRepository;
 
 @Service 
 public class MarkingService {
 	
 	@Autowired
-	MarkingRepository markingRepository;
+	private MarkingRepository markingRepository;
 	
-	public Marking create(Marking marking) {
+	@Autowired
+	private AudioService audioService;
+	@Autowired
+	private UserService userService;
+	
+	public Marking create(MarkingDTO markingDTO) {
+		Marking marking = new Marking();
+		BeanUtils.copyProperties(markingDTO, marking);
+		marking.setAudio(audioService.findById(markingDTO.getAudioId()));
+		marking.setUser(userService.findById(markingDTO.getUserId()));
 		return markingRepository.save(marking);
 	}
 	
@@ -24,8 +34,12 @@ public class MarkingService {
 		return markingRepository.findById(id);
 	}
 	
-	public Optional<Marking> findByUserAndAudio(User user, Audio audio){
-		return markingRepository.findByUserAndAudio(user, audio);
+	public List<Marking> findAll(){
+		return markingRepository.findAll();
+	}
+	
+	public Optional<List<Marking>> findByUserIdAndAudioId(Long userId, Long audioId){
+		return markingRepository.findByUserIdAndAudioId(userId, audioId);
 	}
 	
 	public Marking update(Marking marking) {

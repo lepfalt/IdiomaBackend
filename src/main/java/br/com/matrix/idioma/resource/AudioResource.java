@@ -1,5 +1,7 @@
 package br.com.matrix.idioma.resource;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +37,12 @@ public class AudioResource {
 
 	@GetMapping("/{id}")
 	public ResponseEntity<Audio> findById(@PathVariable Long id) {
-		return new ResponseEntity<>(audioService.findOne(id).get(), HttpStatus.OK);
+		return new ResponseEntity<>(audioService.findById(id), HttpStatus.OK);
+	}
+
+	@GetMapping
+	public ResponseEntity<List<Audio>> findAll() {
+		return new ResponseEntity<>(audioService.findAll(), HttpStatus.OK);
 	}
 
 	@DeleteMapping("/{id}")

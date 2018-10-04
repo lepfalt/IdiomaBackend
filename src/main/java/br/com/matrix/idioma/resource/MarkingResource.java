@@ -15,41 +15,42 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import br.com.matrix.idioma.model.Audio;
 import br.com.matrix.idioma.model.Marking;
-import br.com.matrix.idioma.model.User;
+import br.com.matrix.idioma.model.MarkingDTO;
 import br.com.matrix.idioma.service.MarkingService;
 
 @RestController
-@RequestMapping("marking")
+@RequestMapping("/marking")
 public class MarkingResource {
 	@Autowired
 	private MarkingService markingService;
-	
-	@GetMapping()
-	public ResponseEntity<?> findById(Long id) {
+
+	@GetMapping("/{id}")
+	public ResponseEntity<?> findById(@PathVariable Long id) {
 		return new ResponseEntity<>(markingService.findById(id), HttpStatus.OK);
 	}
-	@GetMapping(path = "/findByUserAndAudio")
-	public ResponseEntity<?> findByUserAndAudio(@RequestParam("user") User user, @RequestParam("audio") Audio audio) {
-		return new ResponseEntity<>(markingService.findByUserAndAudio(user, audio), HttpStatus.OK);
+
+	@GetMapping()
+	public ResponseEntity<?> findByUserAndAudio(@RequestParam(name = "userId", required = true) Long userId,
+			@RequestParam(name = "audioId", required = true) Long audioId) {
+		return new ResponseEntity<>(markingService.findByUserIdAndAudioId(userId, audioId), HttpStatus.OK);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<?> create(@Valid @RequestBody Marking marking) {
-		return new ResponseEntity<>(markingService.create(marking), HttpStatus.CREATED);
+	public ResponseEntity<?> create(@Valid @RequestBody MarkingDTO markingDTO) {
+		return new ResponseEntity<>(markingService.create(markingDTO), HttpStatus.CREATED);
 	}
-	
+
 	@DeleteMapping(path = "/{id}")
 	public ResponseEntity<?> deleteById(@PathVariable("id") Long id) {
 		markingService.deleteById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@PutMapping
 	public ResponseEntity<?> update(@Valid @RequestBody Marking marking) {
 		markingService.update(marking);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 }

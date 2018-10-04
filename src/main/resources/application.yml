@@ -5,9 +5,9 @@ spring:
     hibernate:
       ddl-auto: update
   datasource:
-    url: jdbc:mysql://localhost/idioma?useSSL=false&characterEncoding=UTF-8
+    url: jdbc:mysql://localhost/teste?useSSL=false&characterEncoding=UTF-8
     username: root
     password: 
     tomcat:
       connection-properties: useUnicode=true;characterEncoding=utf-8;
-    platform: developm
+    platform: development

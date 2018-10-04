@@ -7,7 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToOne;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -22,14 +22,12 @@ public class Marking {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@OneToOne
-	@NotEmpty
 	private Audio audio;
 	@OneToOne
-	@NotEmpty
 	private User user;
-	@NotEmpty
+	@NotNull
 	private LocalTime begin;
-	@NotEmpty
+	@NotNull
 	private LocalTime end;
 
 }

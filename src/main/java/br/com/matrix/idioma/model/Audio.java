@@ -1,13 +1,14 @@
 package br.com.matrix.idioma.model;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.URL;
 
@@ -23,14 +24,15 @@ public class Audio {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	@URL
+	@NotEmpty
 	private String link;
 	@NotEmpty
 	private String description;
 	@NotEmpty
 	private String title;
-	@NotEmpty
-	private LocalDateTime duration;
-	@NotEmpty
+	@NotNull
+	private LocalTime duration ;
+	@NotNull
 	private LocalDate creationDate;
 	
 }

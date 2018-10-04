@@ -5,7 +5,7 @@ import java.time.LocalTime;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,10 +16,12 @@ public class MarkingDTO {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
+	@NotNull
 	private Long audioId;
+	@NotNull
 	private Long userId;
-	@NotEmpty
+	@NotNull
 	private LocalTime begin;
-	@NotEmpty
+	@NotNull
 	private LocalTime end;
 }

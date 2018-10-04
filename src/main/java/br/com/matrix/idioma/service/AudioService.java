@@ -1,7 +1,6 @@
 package br.com.matrix.idioma.service;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -27,8 +26,8 @@ public class AudioService {
 		return audioRepository.findAll();
 	}
 
-	public Optional<Audio> findOne(Long id) {
-		return audioRepository.findById(id);
+	public Audio findById(Long id) {
+		return audioRepository.findById(id).get();
 
 	}
 	public void delete(Long id) {
