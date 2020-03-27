@@ -1,0 +1,33 @@
+spring:
+  jpa:  
+    database: MYSQL
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+    properties:  
+         hibernate:   
+               dialect: org.hibernate.dialect.MySQL5InnoDBDialect      
+  datasource:
+    url: jdbc:mysql://localhost/audio_app?useSSL=false&characterEncoding=UTF-8
+    username: app
+    password: 1234
+    tomcat:
+      connection-properties: useUnicode=true;characterEncoding=utf-8;
+    platform: development
+
+app:
+  security:
+    cors:
+      origin-allowed: http://localhost:8080
+      methods-allowed: POST, GET, PUT, DELETE, PATCH, OPTIONS
+      headers-allowed: Authorization, Content-Type, Accept
+      max-age: 3600
+      allow-credentials: 'true'
+    token:
+      access-token:
+        signing-key: secretKey
+      refresh:
+        secure-token: false
+        max-age: 2592000
+      refresh-token-name: audioAppRefreshToken
+      refresh-cookie-name: audioAppRefreshToken

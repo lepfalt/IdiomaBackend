@@ -1,0 +1,10 @@
+spring:
+  profiles:
+    active: homologation
+  data:
+    rest:
+      detection-strategy: annotated
+
+app:
+  application:
+    version: 0.0.1

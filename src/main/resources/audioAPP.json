@@ -1,0 +1,344 @@
+{
+	"version": 1,
+	"collections": [
+		{
+			"id": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+			"name": "Audio APP",
+			"description": "",
+			"order": [
+				"60510a90-b834-af32-90d9-ac7d1da06129"
+			],
+			"folders": [
+				{
+					"owner": "2124316",
+					"lastUpdatedBy": "2124316",
+					"lastRevision": 3428871889,
+					"collection": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+					"folder": null,
+					"id": "283420d0-7692-6ccd-c70d-5a816bfb1dd5",
+					"name": "Authorization",
+					"description": "",
+					"variables": null,
+					"auth": null,
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "0075d32f-fe97-4301-ab3d-ade7dd11843d",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "cb1d8d98-c25a-4d74-bc80-d5c11135ea47",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"order": [
+						"fb7b7419-b4e5-7a8c-572d-c130bd523b04",
+						"0e8f8bdf-79e7-645e-3043-bc22f88eeadb"
+					],
+					"folders_order": [],
+					"createdAt": "2018-02-15T17:30:35.000Z",
+					"updatedAt": "2018-03-16T14:42:40.000Z",
+					"collectionId": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+					"collection_id": "0a862379-29e5-07bf-cfb7-b150fcd051b0"
+				}
+			],
+			"folders_order": [
+				"283420d0-7692-6ccd-c70d-5a816bfb1dd5"
+			],
+			"timestamp": 1540433807683,
+			"synced": true,
+			"remote_id": 0,
+			"owner": "2124316",
+			"sharedWithTeam": false,
+			"subscribed": false,
+			"remoteLink": "",
+			"remoteLinkUpdatedAt": null,
+			"public": false,
+			"createdAt": 1540433807683,
+			"updatedAt": 1540648149051,
+			"write": true,
+			"published": false,
+			"favorite": false,
+			"permissions": {},
+			"syncedPermissions": {},
+			"events": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "cb7a092d-cbd8-4b8c-ad16-4701734c6ba7",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "986747f1-f6a3-46ea-9e4e-38bcdf293982",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			],
+			"variables": [],
+			"auth": null,
+			"requests": [
+				{
+					"id": "0e8f8bdf-79e7-645e-3043-bc22f88eeadb",
+					"owner": "2124316",
+					"lastUpdatedBy": "2124316",
+					"lastRevision": 3428872143,
+					"name": "Revoke access",
+					"dataMode": "params",
+					"data": [],
+					"auth": {
+						"type": "bearer",
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						]
+					},
+					"events": null,
+					"rawModeData": null,
+					"descriptionFormat": null,
+					"description": null,
+					"variables": null,
+					"headers": "",
+					"method": "DELETE",
+					"pathVariables": {},
+					"url": "{{baseEntryPoint}}/tokens/revoke",
+					"queryParams": [],
+					"headerData": [],
+					"pathVariableData": [],
+					"createdAt": "2018-02-15T17:30:35.000Z",
+					"updatedAt": "2018-03-16T14:42:42.000Z",
+					"collectionId": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+					"write": true,
+					"collection_id": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+					"folder": "283420d0-7692-6ccd-c70d-5a816bfb1dd5",
+					"currentHelper": "bearerAuth",
+					"helperAttributes": {
+						"id": "bearer",
+						"token": "{{access_token}}"
+					}
+				},
+				{
+					"id": "60510a90-b834-af32-90d9-ac7d1da06129",
+					"headers": "",
+					"headerData": [],
+					"url": "{{baseEntryPoint}}/audio",
+					"queryParams": [],
+					"events": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7e08be49-f64d-4dcd-b655-6acaf38d2d75",
+								"type": "text/javascript",
+								"exec": [
+									"pm.sendRequest({",
+									"    url: pm.environment.get(\"baseEntryPoint\") + '/oauth/token',",
+									"    method: 'POST',",
+									"    header: ",
+									"        {",
+									"            'content-type': 'application/x-www-form-urlencoded',",
+									"            'cache-control': 'no-cache',",
+									"            'Authorization': 'Basic ZnJvbnQ6MTIzNDU2'",
+									"        },",
+									"    body: ",
+									"        {",
+									"            mode: 'urlencoded',",
+									"            urlencoded: [",
+									"                    { key: \"client\", value: pm.environment.get(\"client\") },",
+									"                    { key: \"username\", value: pm.environment.get(\"user\")},",
+									"                    { key: \"password\", value: pm.environment.get(\"password\") },",
+									"                    { key: \"grant_type\", value: pm.environment.get(\"grant_type\") }",
+									"            ]",
+									"        }",
+									"}, function (err, res) {",
+									"    if(res.code != 200){        ",
+									"        console.log(\"Erro ao renovar Access Token\");",
+									"        return;",
+									"    }",
+									"    ",
+									"    pm.environment.set(\"access_token\", res.json().access_token);",
+									"    console.log(\"Access Token renovado\");",
+									"",
+									"});"
+								]
+							}
+						}
+					],
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "GET",
+					"data": null,
+					"dataMode": "params",
+					"auth": {
+						"bearer": [
+							{
+								"key": "token",
+								"value": "{{access_token}}",
+								"type": "string"
+							}
+						],
+						"type": "bearer"
+					},
+					"time": 1540648593759,
+					"name": "Get audio",
+					"description": "",
+					"collectionId": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+					"responses": [],
+					"preRequestScript": "pm.sendRequest({\n    url: pm.environment.get(\"baseEntryPoint\") + '/oauth/token',\n    method: 'POST',\n    header: \n        {\n            'content-type': 'application/x-www-form-urlencoded',\n            'cache-control': 'no-cache',\n            'Authorization': 'Basic ZnJvbnQ6MTIzNDU2'\n        },\n    body: \n        {\n            mode: 'urlencoded',\n            urlencoded: [\n                    { key: \"client\", value: pm.environment.get(\"client\") },\n                    { key: \"username\", value: pm.environment.get(\"user\")},\n                    { key: \"password\", value: pm.environment.get(\"password\") },\n                    { key: \"grant_type\", value: pm.environment.get(\"grant_type\") }\n            ]\n        }\n}, function (err, res) {\n    if(res.code != 200){        \n        console.log(\"Erro ao renovar Access Token\");\n        return;\n    }\n    \n    pm.environment.set(\"access_token\", res.json().access_token);\n    console.log(\"Access Token renovado\");\n\n});",
+					"tests": null,
+					"currentHelper": "bearerAuth",
+					"helperAttributes": {
+						"id": "bearer",
+						"token": "{{access_token}}"
+					}
+				},
+				{
+					"id": "fb7b7419-b4e5-7a8c-572d-c130bd523b04",
+					"headers": "Content-Type: application/x-www-form-urlencoded\n",
+					"headerData": [
+						{
+							"key": "Content-Type",
+							"value": "application/x-www-form-urlencoded",
+							"description": "",
+							"enabled": true
+						}
+					],
+					"url": "{{baseEntryPoint}}/oauth/token",
+					"folder": "283420d0-7692-6ccd-c70d-5a816bfb1dd5",
+					"queryParams": [],
+					"events": null,
+					"pathVariables": {},
+					"pathVariableData": [],
+					"method": "POST",
+					"data": [
+						{
+							"key": "client",
+							"value": "{{client}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "username",
+							"value": "{{user}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "grant_type",
+							"value": "{{grant_type}}",
+							"type": "text",
+							"enabled": true
+						}
+					],
+					"dataMode": "urlencoded",
+					"auth": {
+						"type": "basic",
+						"basic": [
+							{
+								"key": "password",
+								"value": "{{client_password}}",
+								"type": "string"
+							},
+							{
+								"key": "username",
+								"value": "{{client}}",
+								"type": "string"
+							}
+						]
+					},
+					"time": 1540434788797,
+					"name": "Request Token",
+					"description": null,
+					"collectionId": "0a862379-29e5-07bf-cfb7-b150fcd051b0",
+					"currentHelper": "basicAuth",
+					"helperAttributes": {
+						"id": "basic",
+						"username": "{{client}}",
+						"password": "{{client_password}}"
+					}
+				}
+			]
+		}
+	],
+	"environments": [
+		{
+			"id": "22565755-37f5-5e11-540d-b2fe04c38f32",
+			"name": "Audio APP",
+			"values": [
+				{
+					"enabled": true,
+					"key": "baseEntryPoint",
+					"value": "http://localhost:8080",
+					"type": "text"
+				},
+				{
+					"enabled": true,
+					"key": "client",
+					"value": "front",
+					"type": "text"
+				},
+				{
+					"enabled": true,
+					"key": "user",
+					"value": "jonh@nobody.com.br",
+					"type": "text"
+				},
+				{
+					"enabled": true,
+					"key": "grant_type",
+					"value": "password",
+					"type": "text"
+				},
+				{
+					"enabled": true,
+					"key": "password",
+					"value": "654321",
+					"type": "text"
+				},
+				{
+					"enabled": true,
+					"key": "client_password",
+					"value": "123456",
+					"type": "text"
+				},
+				{
+					"enabled": true,
+					"key": "access_token",
+					"value": "",
+					"type": "text"
+				}
+			],
+			"team": null,
+			"timestamp": 1540648685994
+		}
+	],
+	"headerPresets": [],
+	"globals": []
+}
